@@ -2,6 +2,7 @@
   "name": "phonebook",
   "version": "0.1.0",
   "private": true,
+  "main": "index.js",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -15,12 +16,12 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "dev": "nodemon run.js",
-    "server": "json-server -p3001 --watch db.json"
+    "start": "node index.js",
+    "build:ui": "rm -rf build && cd ../fullstackopen/part2/phonebook && npm run build && cp -r build ../fullstackopen/part2/phonebook .",
+    "deploy": "git push heroku master",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "logs:prod": "heroku logs --tail"
   },
   "eslintConfig": {
     "extends": "react-app"
