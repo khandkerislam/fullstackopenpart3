@@ -1,12 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3001/persons'
-
-const morgan = require('morgan');
-const express = require('express');
-
-const app = express()
-
-app.use(morgan);
+const baseUrl = 'http://localhost:3001/api/persons'
 
 const getAll = () => {
     const request = axios.get(baseUrl)
