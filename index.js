@@ -93,8 +93,8 @@ app.post('/api/numbers/:id',(request,response) => {
     response.json(numbers)
 })
 
-const port = 3001
+const PORT = process.env.PORT || 5000
 
-app.listen(port, () => {
-console.log(`Server running on port ${port}`)
+app.listen(PORT, () => {
+    console.log(`Mixing it up on port ${PORT}`)
 })
