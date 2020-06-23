@@ -46,7 +46,11 @@ const generatedId = () => {
     return maxId
 }
 
-
+app.get('/', (req, res) => {
+    res.send(
+        `<p>Hello World</p>`
+    )
+})
 
 app.get('/info', (req, res) => {
     res.send(
