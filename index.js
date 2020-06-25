@@ -4,16 +4,7 @@ const express = require('express');
 const cors = require('cors')
 
 const app = express()
-
-const path = require('path')// Serve static files from the React frontend app
-console.log(__dirname);
-app.use(express.static(path.join(__dirname, 'build')))// Anything that doesn't match the above, send back index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/build/index.html'))
-})
-
-app.use(cors())
-app.use(express.static('build'))
+app.use(cors());
 
 morgan.token("body", req => JSON.stringify(req.body));
 app.use(
@@ -21,6 +12,9 @@ app.use(
     ":method :url :body - status :status length :res[content-length] - :response-time ms"
   )
 );
+
+app.use(express.static('build'))
+
 
 const people = [
     {
@@ -52,19 +46,19 @@ const generatedId = () => {
     return maxId
 }
 
-app.get('/', cors(), (req, res) => {
+app.get('/', (req, res) => {
     res.send(
         `<p>Hello World</p>`
     )
 })
 
-app.get('/info', cors(), (req, res) => {
+app.get('/info', (req, res) => {
     res.send(
         `<p>Phonebook has info for ${people.length} people</p>`
     )
 })
 
-app.get('/api/persons', cors(), (req,res)=>{
+app.get('/api/persons', (req,res)=>{
     res.json(people)
 })
 
