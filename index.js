@@ -13,7 +13,7 @@ app.use(
     ":method :url :body - status :status length :res[content-length] - :response-time ms"
   )
 );
-console.log("LELELDELDL")
+
 app.use(express.static(path.resolve(__dirname,"../build")));
 
 
@@ -47,11 +47,6 @@ const generatedId = () => {
     return maxId
 }
 
-app.get('/', (req, res) => {
-    res.send(
-        `<p>Hello World</p>`
-    )
-})
 
 app.get('/info', (req, res) => {
     res.send(
