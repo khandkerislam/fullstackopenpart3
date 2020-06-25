@@ -53,19 +53,19 @@ const generatedId = () => {
     return maxId
 }
 
-app.get('/', (req, res) => {
+app.get('/', cors(), (req, res) => {
     res.send(
         `<p>Hello World</p>`
     )
 })
 
-app.get('/info', (req, res) => {
+app.get('/info', cors(), (req, res) => {
     res.send(
         `<p>Phonebook has info for ${people.length} people</p>`
     )
 })
 
-app.get('/api/persons', (req,res)=>{
+app.get('/api/persons', cors(), (req,res)=>{
     res.json(people)
 })
 
