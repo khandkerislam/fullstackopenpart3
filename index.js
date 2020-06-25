@@ -3,7 +3,6 @@ const express = require('express');
 
 const cors = require('cors')
 
-const baseUrl = '/api/persons'
 const app = express()
 
 const path = require('path')// Serve static files from the React frontend app
