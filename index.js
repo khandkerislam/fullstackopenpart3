@@ -13,7 +13,7 @@ app.use(
     ":method :url :body - status :status length :res[content-length] - :response-time ms"
   )
 );
-
+console.log("LELELDELDL")
 app.use(express.static(path.resolve(__dirname,"../build")));
 
 
