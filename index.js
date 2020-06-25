@@ -1,5 +1,6 @@
 const morgan = require('morgan');
 const express = require('express');
+const path = require('path');
 
 const cors = require('cors')
 
@@ -13,7 +14,7 @@ app.use(
   )
 );
 
-app.use(express.static('build'))
+app.use(express.static(path.resolve(__dirname,"../build")));
 
 
 const people = [
