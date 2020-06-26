@@ -5,17 +5,16 @@ const path = require('path');
 const cors = require('cors')
 
 const app = express()
-app.use(cors());
 
 morgan.token("body", req => JSON.stringify(req.body));
-app.use(
-  morgan(
-    ":method :url :body - status :status length :res[content-length] - :response-time ms"
-  )
-);
 
 app.use(express.static(path.resolve(__dirname,"../build")));
-
+app.use(cors());
+app.use(
+    morgan(
+      ":method :url :body - status :status length :res[content-length] - :response-time ms"
+    )
+  );
 
 const people = [
     {
@@ -64,14 +63,14 @@ app.get('/api/persons/:id',(request, response) => {
     number ? response.json(number) : response.status(404).end()
 })
 
-app.delete('/api/people/:id',(request,response) => {
+app.delete('/api/persons/:id',(request,response) => {
     const id = Number(request.params.id)
     people = people.filter(number => number.id !== id)
 
     response.status(204).end()
 })
 
-app.post('/api/people/:id',(request,response) => {
+app.post('/api/persons/:id',(request,response) => {
 
     const body = request.body
 
